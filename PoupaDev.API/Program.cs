@@ -6,26 +6,33 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var connectionString = builder.Configuration.GetConnectionString("PoupaDevCs");
+// PARA ACESSO AO BANCO EM MEMÓRIA
+builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseInMemoryDatabase("PoupaDevDb"));
 
-builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseSqlServer(connectionString));
-
-builder.Services.AddHostedService<RendimentoAutomaticoJob>();
+// PARA ACESSO AO SQL Server
+// var connectionString = builder.Configuration.GetConnectionString("PoupaDevCs");
+// builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Job
+builder.Services.AddHostedService<RendimentoAutomaticoJob>();
+
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
+// INFO: Swagger visível só em desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-} else {
+}
+else
+{
     app.UseExceptionHandler("/error");
 }
 

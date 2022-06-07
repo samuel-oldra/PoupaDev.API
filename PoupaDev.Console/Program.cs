@@ -39,12 +39,15 @@ switch (opcao)
     case "1":
         Console.WriteLine("switch-case: Opção 1 selecionada.");
         break;
+
     case "2":
         Console.WriteLine("switch-case: Opção 2 selecionada.");
         break;
+
     case "3":
         Console.WriteLine("switch-case: Opção 3 selecionada.");
         break;
+
     default:
         Console.WriteLine("switch-case: Opção inválida.");
         break;
@@ -114,18 +117,22 @@ while (opcao != "0")
             // Cadastrar
             CadastrarObjetivo();
             break;
+
         case "2":
             // Depósito
             RealizarOperacao(TipoOperacao.Deposito);
             break;
+
         case "3":
             // Saque
             RealizarOperacao(TipoOperacao.Saque);
             break;
+
         case "4":
             // Detalhes
             ObterDetalhes();
             break;
+
         default:
             // Opção inválida.
             Console.WriteLine("Opção inválida.");
