@@ -5,32 +5,30 @@ namespace PoupaDev.API.Persistence
 {
     public class PoupaDevDbContext : DbContext
     {
-        public PoupaDevDbContext(DbContextOptions<PoupaDevDbContext> options) : base(options)
-        {
-        }
-
         public DbSet<ObjetivoFinanceiro> Objetivos { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<ObjetivoFinanceiro>(o =>
-            {
-                o.HasKey(of => of.Id);
+        public PoupaDevDbContext(DbContextOptions<PoupaDevDbContext> options) : base(options) { }
 
-                o.Property(of => of.ValorObjetivo)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ObjetivoFinanceiro>(of =>
+            {
+                of.HasKey(of => of.Id);
+
+                of.Property(of => of.ValorObjetivo)
                     .HasColumnType("decimal(18,4)");
 
-                o.HasMany(of => of.Operacoes)
+                of.HasMany(of => of.Operacoes)
                     .WithOne()
                     .HasForeignKey(o => o.IdObjetivo)
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            builder.Entity<Operacao>(o =>
+            modelBuilder.Entity<Operacao>(op =>
             {
-                o.HasKey(op => op.Id);
+                op.HasKey(op => op.Id);
 
-                o.Property(op => op.Valor)
+                op.Property(op => op.Valor)
                     .HasColumnType("decimal(18,4)");
             });
         }
