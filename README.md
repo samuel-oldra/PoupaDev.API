@@ -27,7 +27,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 ## Comandos básicos
 ```
 dotnet new gitignore
-dotnet new webapi -o DevGames.API
+dotnet new webapi -o PoupaDev.API
 dotnet build
 dotnet run
 dotnet watch run
