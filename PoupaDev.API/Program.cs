@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PoupaDev.API.Jobs;
 using PoupaDev.API.Persistence;
+using PoupaDev.API.Persistence.Repositories;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,11 @@ builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseInMemoryDatabase("Pou
 // PARA ACESSO AO SQL Server
 // var connectionString = builder.Configuration.GetConnectionString("PoupaDevCs");
 // builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseSqlServer(connectionString));
+
+// Injeção de Dependência
+// Tipos: Transient, Scoped, Singleton
+// Padrão Repository
+builder.Services.AddScoped<IObjetivoFinanceiroRepository, ObjetivoFinanceiroRepository>();
 
 builder.Services.AddControllers();
 
