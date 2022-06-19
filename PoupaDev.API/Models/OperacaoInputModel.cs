@@ -1,6 +1,6 @@
 using PoupaDev.API.Enums;
 
-namespace PoupaDev.API.InputModels
+namespace PoupaDev.API.Models
 {
     public class OperacaoInputModel
     {
