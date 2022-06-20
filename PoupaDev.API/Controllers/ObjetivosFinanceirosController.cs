@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PoupaDev.API.Entities;
-using PoupaDev.API.InputModels;
+using PoupaDev.API.Models;
 using PoupaDev.API.Persistence.Repositories;
 
 namespace PoupaDev.API.Controllers
