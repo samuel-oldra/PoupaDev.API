@@ -9,8 +9,8 @@ namespace PoupaDev.API.Jobs
 
         public IServiceProvider ServiceProvider { get; set; }
 
-        public RendimentoAutomaticoJob(IServiceProvider serviceProvider) =>
-            ServiceProvider = serviceProvider;
+        public RendimentoAutomaticoJob(IServiceProvider serviceProvider)
+            => ServiceProvider = serviceProvider;
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -19,8 +19,8 @@ namespace PoupaDev.API.Jobs
             return Task.CompletedTask;
         }
 
-        public Task StopAsync(CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public Task StopAsync(CancellationToken cancellationToken)
+            => Task.CompletedTask;
 
         public void RenderSaldo(object? state)
         {
