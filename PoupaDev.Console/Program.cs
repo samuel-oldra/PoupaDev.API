@@ -111,7 +111,7 @@ foreach (var nota in ordered)
 
 */
 
-// TODO: Formatar e organizar o programa console.
+// Programa
 
 var objetivos = new List<ObjetivoFinanceiro> {
     new ObjetivoFinanceiro("Viagem a Orlando", 25000),
@@ -119,9 +119,13 @@ var objetivos = new List<ObjetivoFinanceiro> {
 };
 
 foreach (var objetivo in objetivos)
+{
     objetivo.ImprimirResumo();
+}
 
-Console.WriteLine();
+Console.WriteLine(); // Nova linha
+
+
 
 Console.WriteLine("---- PoupaDev ----");
 ExibirMenu();
@@ -135,22 +139,18 @@ while (opcao != "0")
             // Cadastrar
             CadastrarObjetivo();
             break;
-
         case "2":
             // Depósito
             RealizarOperacao(TipoOperacao.Deposito);
             break;
-
         case "3":
             // Saque
             RealizarOperacao(TipoOperacao.Saque);
             break;
-
         case "4":
             // Detalhes
             ObterDetalhes();
             break;
-
         default:
             // Opção inválida.
             Console.WriteLine("Opção inválida.");
@@ -175,7 +175,7 @@ void ExibirMenu()
 
 void CadastrarObjetivo()
 {
-    Console.WriteLine();
+    Console.WriteLine(); // Nova linha
 
     Console.Write("Digite um título: ");
     var titulo = Console.ReadLine();
@@ -192,7 +192,7 @@ void CadastrarObjetivo()
 
 void RealizarOperacao(TipoOperacao tipo)
 {
-    Console.WriteLine();
+    Console.WriteLine(); // Nova linha
 
     Console.Write("Digite o ID do Objetivo: ");
     var idLido = Console.ReadLine();
@@ -205,22 +205,22 @@ void RealizarOperacao(TipoOperacao tipo)
     var operacao = new Operacao(valor, tipo, id);
 
     var objetivo = objetivos.SingleOrDefault(o => o.Id == id);
-
     objetivo.Operacoes.Add(operacao);
 }
 
 void ObterDetalhes()
 {
-    Console.WriteLine();
+    Console.WriteLine(); // Nova linha
 
     Console.Write("Digite o ID do Objetivo: ");
     var idLido = Console.ReadLine();
     var id = int.Parse(idLido);
 
     var objetivo = objetivos.SingleOrDefault(o => o.Id == id);
-
     objetivo.ImprimirResumo();
 }
+
+
 
 public enum TipoOperacao
 {
@@ -290,7 +290,10 @@ public class ObjetivoFinanceiroComPrazo : ObjetivoFinanceiro
 {
     public DateTime Prazo { get; private set; }
 
-    public ObjetivoFinanceiroComPrazo(DateTime prazo, string? titulo, decimal? valorObjetivo)
+    public ObjetivoFinanceiroComPrazo(
+        DateTime prazo,
+        string? titulo,
+        decimal? valorObjetivo)
         : base(titulo, valorObjetivo)
         => Prazo = prazo;
 
