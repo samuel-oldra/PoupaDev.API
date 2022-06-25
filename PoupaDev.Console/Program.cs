@@ -182,7 +182,7 @@ void CadastrarObjetivo()
 
     Console.Write("Digite um valor de objetivo: ");
     var valorLido = Console.ReadLine();
-    var valor = decimal.Parse(valorLido);
+    var valor = decimal.Parse(valorLido ?? "0");
 
     var objetivo = new ObjetivoFinanceiro(titulo, valor);
     objetivos.Add(objetivo);
@@ -196,15 +196,16 @@ void RealizarOperacao(TipoOperacao tipo)
 
     Console.Write("Digite o ID do Objetivo: ");
     var idLido = Console.ReadLine();
-    var id = int.Parse(idLido);
+    var id = int.Parse(idLido ?? "0");
 
     Console.Write("Digite o valor da operação: ");
     var valorLido = Console.ReadLine();
-    var valor = decimal.Parse(valorLido);
+    var valor = decimal.Parse(valorLido ?? "0");
 
     var operacao = new Operacao(valor, tipo, id);
 
     var objetivo = objetivos.SingleOrDefault(o => o.Id == id);
+    if (objetivo == null) return;
     objetivo.Operacoes.Add(operacao);
 }
 
@@ -214,9 +215,10 @@ void ObterDetalhes()
 
     Console.Write("Digite o ID do Objetivo: ");
     var idLido = Console.ReadLine();
-    var id = int.Parse(idLido);
+    var id = int.Parse(idLido ?? "0");
 
     var objetivo = objetivos.SingleOrDefault(o => o.Id == id);
+    if (objetivo == null) return;
     objetivo.ImprimirResumo();
 }
 
