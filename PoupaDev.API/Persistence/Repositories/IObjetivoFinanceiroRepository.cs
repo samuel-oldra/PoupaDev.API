@@ -6,7 +6,7 @@ namespace PoupaDev.API.Persistence.Repositories
     {
         IEnumerable<ObjetivoFinanceiro> GetAll();
 
-        ObjetivoFinanceiro GetById(int id);
+        ObjetivoFinanceiro? GetById(int id);
 
         void Add(ObjetivoFinanceiro objetivo);
 

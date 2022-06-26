@@ -13,7 +13,7 @@ namespace PoupaDev.API.Persistence.Repositories
         public IEnumerable<ObjetivoFinanceiro> GetAll()
             => context.Objetivos;
 
-        public ObjetivoFinanceiro GetById(int id)
+        public ObjetivoFinanceiro? GetById(int id)
             => context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(s => s.Id == id);
 
         public void Add(ObjetivoFinanceiro objetivo)
