@@ -10,11 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // PARA ACESSO AO BANCO EM MEMÓRIA
-builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseInMemoryDatabase("PoupaDevDb"));
+// builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseInMemoryDatabase("PoupaDevDb"));
 
 // PARA ACESSO AO SQL Server
 // var connectionString = builder.Configuration.GetConnectionString("PoupaDevCs");
 // builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseSqlServer(connectionString));
+
+// PARA ACESSO AO SQLite
+var connectionString = builder.Configuration.GetConnectionString("PoupaDevCs");
+builder.Services.AddDbContext<PoupaDevDbContext>(o => o.UseSqlite(connectionString));
 
 // Injeção de Dependência
 // Tipos: Transient, Scoped, Singleton
