@@ -12,7 +12,8 @@ namespace PoupaDev.API.Controllers
     {
         private readonly PoupaDevDbContext _context;
 
-        public ObjetivosFinanceirosController(PoupaDevDbContext context) => _context = context;
+        public ObjetivosFinanceirosController(PoupaDevDbContext context) =>
+            _context = context;
 
         [HttpGet]
         public IActionResult GetTodos()
@@ -25,10 +26,7 @@ namespace PoupaDev.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPorId(int id)
         {
-            var objetivo = _context
-                .Objetivos
-                .Include(o => o.Operacoes)
-                .SingleOrDefault(s => s.Id == id);
+            var objetivo = _context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(s => s.Id == id);
 
             if (objetivo == null)
                 return NotFound();
@@ -44,9 +42,7 @@ namespace PoupaDev.API.Controllers
             _context.Objetivos.Add(objetivo);
             _context.SaveChanges();
 
-            var id = objetivo.Id;
-
-            return CreatedAtAction("GetPorId", new { id }, model);
+            return CreatedAtAction("GetPorId", new { objetivo.Id }, model);
         }
 
         [HttpPost("{id}/operacoes")]
@@ -54,9 +50,7 @@ namespace PoupaDev.API.Controllers
         {
             var operacao = new Operacao(model.Valor, model.TipoOperacao, id);
 
-            var objetivo = _context.Objetivos
-                .Include(o => o.Operacoes)
-                .SingleOrDefault(o => o.Id == id);
+            var objetivo = _context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(o => o.Id == id);
 
             if (objetivo == null)
                 return NotFound();
@@ -70,6 +64,7 @@ namespace PoupaDev.API.Controllers
 
         [Route("/error")]
         [ApiExplorerSettings(IgnoreApi = true)]
-        public IActionResult Error() => Problem();
+        public IActionResult Error() =>
+            Problem();
     }
 }

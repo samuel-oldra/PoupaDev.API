@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Job
+// Job - Hosted Services
 builder.Services.AddHostedService<RendimentoAutomaticoJob>();
 
 var app = builder.Build();

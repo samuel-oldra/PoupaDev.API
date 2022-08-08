@@ -9,10 +9,8 @@ namespace PoupaDev.API.Jobs
 
         public IServiceProvider ServiceProvider { get; set; }
 
-        public RendimentoAutomaticoJob(IServiceProvider serviceProvider)
-        {
+        public RendimentoAutomaticoJob(IServiceProvider serviceProvider) =>
             ServiceProvider = serviceProvider;
-        }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -21,29 +19,22 @@ namespace PoupaDev.API.Jobs
             return Task.CompletedTask;
         }
 
+        public Task StopAsync(CancellationToken cancellationToken) =>
+            Task.CompletedTask;
+
         public void RenderSaldo(object? state)
         {
             using (var scope = ServiceProvider.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<PoupaDevDbContext>();
 
-                var objetivos = context
-                    .Objetivos
-                    .Include(o => o.Operacoes)
-                    .ToList();
+                var objetivos = context.Objetivos.Include(o => o.Operacoes).ToList();
 
                 foreach (var objetivo in objetivos)
-                {
                     objetivo.Render();
-                }
 
                 context.SaveChanges();
             }
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            return Task.CompletedTask;
         }
     }
 }
