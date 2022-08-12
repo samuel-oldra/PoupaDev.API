@@ -28,6 +28,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 ```
 dotnet new gitignore
 dotnet new webapi -o PoupaDev.API
+dotnet new console -o PoupaDev.Console
 dotnet build
 dotnet run
 dotnet watch run
