@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PoupaDev.API.Entities;
 using PoupaDev.API.InputModels;
-using PoupaDev.API.Persistence;
+using PoupaDev.API.Persistence.Repositories;
 
 namespace PoupaDev.API.Controllers
 {
@@ -10,10 +9,10 @@ namespace PoupaDev.API.Controllers
     [Route("api/objetivos-financeiros")]
     public class ObjetivosFinanceirosController : ControllerBase
     {
-        private readonly PoupaDevDbContext _context;
+        private readonly IObjetivoFinanceiroRepository objetivoFinanceiroRepository;
 
-        public ObjetivosFinanceirosController(PoupaDevDbContext context) =>
-            _context = context;
+        public ObjetivosFinanceirosController(IObjetivoFinanceiroRepository objetivoFinanceiroRepository) =>
+            this.objetivoFinanceiroRepository = objetivoFinanceiroRepository;
 
         // GET: api/objetivos-financeiros
         /// <summary>
@@ -25,7 +24,7 @@ namespace PoupaDev.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetTodos()
         {
-            var objetivos = _context.Objetivos;
+            var objetivos = objetivoFinanceiroRepository.GetAll();
 
             return Ok(objetivos);
         }
@@ -43,7 +42,7 @@ namespace PoupaDev.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetPorId(int id)
         {
-            var objetivo = _context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(s => s.Id == id);
+            var objetivo = objetivoFinanceiroRepository.GetById(id);
 
             if (objetivo == null)
                 return NotFound("Objetivo Financeiro não encontrado.");
@@ -74,8 +73,7 @@ namespace PoupaDev.API.Controllers
         {
             var objetivo = new ObjetivoFinanceiro(model.Titulo, model.Descricao, model.ValorObjetivo);
 
-            _context.Objetivos.Add(objetivo);
-            _context.SaveChanges();
+            objetivoFinanceiroRepository.Add(objetivo);
 
             return CreatedAtAction("GetPorId", new { objetivo.Id }, model);
         }
@@ -104,14 +102,14 @@ namespace PoupaDev.API.Controllers
         {
             var operacao = new Operacao(model.Valor, model.TipoOperacao, id);
 
-            var objetivo = _context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(o => o.Id == id);
+            var objetivo = objetivoFinanceiroRepository.GetById(id);
 
             if (objetivo == null)
                 return NotFound("Objetivo Financeiro não encontrado.");
 
             objetivo.RealizarOperacao(operacao);
 
-            _context.SaveChanges();
+            objetivoFinanceiroRepository.SaveChanges();
 
             return NoContent();
         }
