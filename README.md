@@ -11,6 +11,7 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 - Swagger
 - Injeção de Dependência
 - Programação Orientada a Objetos
+- Padrão Repository
 - Hosted Services
 - Clean Code
 - Publicação
