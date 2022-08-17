@@ -12,14 +12,14 @@ using PoupaDev.API.Persistence;
 namespace PoupaDev.API.Persistence.Migrations
 {
     [DbContext(typeof(PoupaDevDbContext))]
-    [Migration("20220724192045_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220914124740_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
