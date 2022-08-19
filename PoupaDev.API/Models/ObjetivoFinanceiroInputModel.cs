@@ -1,4 +1,4 @@
-namespace PoupaDev.API.InputModels
+namespace PoupaDev.API.Models
 {
     public class ObjetivoFinanceiroInputModel
     {
