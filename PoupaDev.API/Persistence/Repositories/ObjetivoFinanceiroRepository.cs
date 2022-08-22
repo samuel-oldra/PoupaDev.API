@@ -7,14 +7,14 @@ namespace PoupaDev.API.Persistence.Repositories
     {
         private readonly PoupaDevDbContext context;
 
-        public ObjetivoFinanceiroRepository(PoupaDevDbContext context) =>
-            this.context = context;
+        public ObjetivoFinanceiroRepository(PoupaDevDbContext context)
+            => this.context = context;
 
-        public IEnumerable<ObjetivoFinanceiro> GetAll() =>
-            context.Objetivos;
+        public IEnumerable<ObjetivoFinanceiro> GetAll()
+            => context.Objetivos;
 
-        public ObjetivoFinanceiro GetById(int id) =>
-            context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(s => s.Id == id);
+        public ObjetivoFinanceiro GetById(int id)
+            => context.Objetivos.Include(o => o.Operacoes).SingleOrDefault(s => s.Id == id);
 
         public void Add(ObjetivoFinanceiro objetivo)
         {
@@ -23,7 +23,7 @@ namespace PoupaDev.API.Persistence.Repositories
             SaveChanges();
         }
 
-        public void SaveChanges() =>
-            context.SaveChanges();
+        public void SaveChanges()
+            => context.SaveChanges();
     }
 }

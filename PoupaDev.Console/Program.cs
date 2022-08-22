@@ -239,7 +239,8 @@ public class ObjetivoFinanceiro
 
     public List<Operacao> Operacoes { get; private set; }
 
-    public decimal Saldo => ObterSaldo();
+    public decimal Saldo
+        => ObterSaldo();
 
     public ObjetivoFinanceiro(string? titulo, decimal? valorObjetivo)
     {
@@ -263,17 +264,17 @@ public class ObjetivoFinanceiro
         return totalDeposito - totalSaque;
     }
 
-    public virtual void ImprimirResumo() =>
-        Console.WriteLine($"Objetivo {Titulo}, Valor: {ValorObjetivo}, com Saldo Atual: R$ {Saldo}");
+    public virtual void ImprimirResumo()
+        => Console.WriteLine($"Objetivo {Titulo}, Valor: {ValorObjetivo}, com Saldo Atual: R$ {Saldo}");
 }
 
 public class ObjetivoFinanceiroComPrazo : ObjetivoFinanceiro
 {
     public DateTime Prazo { get; private set; }
 
-    public ObjetivoFinanceiroComPrazo(DateTime prazo, string? titulo, decimal? valorObjetivo) :
-        base(titulo, valorObjetivo) =>
-        Prazo = prazo;
+    public ObjetivoFinanceiroComPrazo(DateTime prazo, string? titulo, decimal? valorObjetivo)
+        : base(titulo, valorObjetivo)
+        => Prazo = prazo;
 
     public override void ImprimirResumo()
     {

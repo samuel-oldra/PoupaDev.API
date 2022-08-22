@@ -19,8 +19,8 @@ namespace PoupaDev.API.Entities
 
         public List<Operacao> Operacoes { get; private set; }
 
-        public decimal Saldo =>
-            ObterSaldo();
+        public decimal Saldo
+            => ObterSaldo();
 
         public ObjetivoFinanceiro(string? titulo, string? descricao, decimal? valorObjetivo)
         {
