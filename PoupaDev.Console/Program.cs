@@ -14,40 +14,49 @@ double numeroDouble = 5.4;
 decimal numeroDecimal = 5.3m;
 char caractere = 'a';
 string segundoNome = "Oliveira";
-int[] matriz = new int[3] { 1, 2, 3 };
 DateTime hoje = DateTime.Now;
 DateTime aniversario = new DateTime(1992, 1, 1);
+int[] matriz = new int[3] { 1, 2, 3 };
 
 // if-else
+
+Console.WriteLine("Utilizando if-else");
 
 Console.Write("Digite uma opção entre 1 e 3: ");
 var opcao = Console.ReadLine();
 
 if (opcao == "1")
+{
     Console.WriteLine("if-else: Opção 1 selecionada.");
+}
 else if (opcao == "2")
+{
     Console.WriteLine("if-else: Opção 2 selecionada.");
+}
 else if (opcao == "3")
+{
     Console.WriteLine("if-else: Opção 3 selecionada.");
+}
 else
+{
     Console.WriteLine("if-else: Opção inválida.");
+}
 
 // switch-case
+
+Console.WriteLine("Utilizando switch-case");
 
 switch (opcao)
 {
     case "1":
         Console.WriteLine("switch-case: Opção 1 selecionada.");
         break;
-
     case "2":
         Console.WriteLine("switch-case: Opção 2 selecionada.");
         break;
-
     case "3":
         Console.WriteLine("switch-case: Opção 3 selecionada.");
         break;
-
     default:
         Console.WriteLine("switch-case: Opção inválida.");
         break;
@@ -55,18 +64,20 @@ switch (opcao)
 
 // for
 
+Console.WriteLine("Utilizando for");
+
 Console.Write("Digite uma lista ex. '1 2 3 4 5': ");
 var valores = Console.ReadLine(); // "1 2 3 4 5"
-var matrizValores = valores.Split(" "); // 0, 1, 2, 3, 4
-
-Console.WriteLine("Utilizando For.");
+var matrizValores = valores.Split(" "); // [ "1", "2", "3", "4", "5" ]
 
 for (var i = 0; i < matrizValores.Length; i++)
+{
     Console.WriteLine(matrizValores[i]);
+}
 
 // while
 
-Console.WriteLine("Utilizando While.");
+Console.WriteLine("Utilizando while");
 
 var contador = 0;
 
@@ -79,21 +90,28 @@ while (contador < matrizValores.Length)
 
 // list
 
+Console.WriteLine("Utilizando list");
+
 var notasTurma = new List<int> { 10, 5, 2, 3, 10, 4, 3, 2, 7, 2, 5, 1, 4 };
 
-var existeNota1 = notasTurma.Any(n => n == 1);
-var primeiroNota10 = notasTurma.First(n => n == 10);
 var singleNota1 = notasTurma.Single(n => n == 1);
-var max = notasTurma.Max();
-var min = notasTurma.Min();
-var sum = notasTurma.Sum();
-var media = notasTurma.Average();
+var primeiroNota10 = notasTurma.First(n => n == 10);
+var existeNota1 = notasTurma.Any(n => n == 1);
 var ordered = notasTurma.OrderByDescending(n => n);
 
+var min = notasTurma.Min();
+var max = notasTurma.Max();
+var sum = notasTurma.Sum();
+var media = notasTurma.Average();
+
 foreach (var nota in ordered)
+{
     Console.WriteLine(nota);
+}
 
 */
+
+// TODO: Formatar e organizar o programa console.
 
 var objetivos = new List<ObjetivoFinanceiro> {
     new ObjetivoFinanceiro("Viagem a Orlando", 25000),
