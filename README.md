@@ -1,6 +1,11 @@
-# Projeto de API usando C# e .NET 6
-
-## PoupaDev - Jornada .NET Direto ao Ponto
+<h1 align="center">
+  PoupaDev - Jornada .NET Direto ao Ponto
+</h1>
+<p align="center">
+  <a href="#tecnologias-e-práticas-utilizadas">Tecnologias e práticas utilizadas</a> •
+  <a href="#funcionalidades">Funcionalidades</a> •
+  <a href="#comandos">Comandos</a>
+</p>
 
 Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros.
 
@@ -25,7 +30,9 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 
 ![alt text](https://raw.githubusercontent.com/samuel-oldra/PoupaDev.API/main/README_IMGS/swagger_ui.png)
 
-## Comandos básicos
+## Comandos
+
+### Comandos básicos
 ```
 dotnet new gitignore
 dotnet new webapi -o PoupaDev.API
@@ -36,13 +43,13 @@ dotnet watch run
 dotnet publish
 ```
 
-## Tool Entity Framework Core (migrations)
+### Tool Entity Framework Core (migrations)
 ```
 dotnet tool install --global dotnet-ef
 dotnet tool uninstall --global dotnet-ef
 ```
 
-## Migrations
+### Migrations
 ```
 dotnet ef migrations add InitialMigration -o Persistence/Migrations
 dotnet ef database update
