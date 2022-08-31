@@ -1,5 +1,5 @@
 <h1 align="center">
-  PoupaDev - Jornada .NET Direto ao Ponto
+  PoupaDev - Jornada .NET Direto ao  Ponto
 </h1>
 <p align="center">
   <a href="#tecnologias-e-práticas-utilizadas">Tecnologias e práticas utilizadas</a> •
