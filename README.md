@@ -13,11 +13,11 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 - ASP.NET Core com .NET 6
 - Entity Framework Core
 - SQL Server / SQLite / In-Memory database
-- Swagger
-- Injeção de Dependência
+- Swagger (documentação)
 - Programação Orientada a Objetos
+- Injeção de Dependência
 - Padrão Repository
-- Hosted Services
+- Hosted Services (tarefas em segundo plano)
 - Clean Code
 - Publicação
 
@@ -37,9 +37,11 @@ Foi desenvolvida uma API REST completa de gerenciamento de objetivos financeiros
 dotnet new gitignore
 dotnet new webapi -o PoupaDev.API
 dotnet new console -o PoupaDev.Console
+
 dotnet build
 dotnet run
 dotnet watch run
+
 dotnet publish
 ```
 
