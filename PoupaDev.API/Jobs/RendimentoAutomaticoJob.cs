@@ -5,7 +5,7 @@ namespace PoupaDev.API.Jobs
 {
     public class RendimentoAutomaticoJob : IHostedService
     {
-        private Timer _timer;
+        private Timer? _timer;
 
         public IServiceProvider ServiceProvider { get; set; }
 

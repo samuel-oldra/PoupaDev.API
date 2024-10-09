@@ -11,6 +11,10 @@ namespace PoupaDev.API.Controllers
     {
         private readonly IObjetivoFinanceiroRepository objetivoFinanceiroRepository;
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="objetivoFinanceiroRepository"></param>
         public ObjetivosFinanceirosController(IObjetivoFinanceiroRepository objetivoFinanceiroRepository)
             => this.objetivoFinanceiroRepository = objetivoFinanceiroRepository;
 
@@ -114,6 +118,10 @@ namespace PoupaDev.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Error
+        /// </summary>
+        /// <returns></returns>
         [Route("/error")]
         [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Error()
