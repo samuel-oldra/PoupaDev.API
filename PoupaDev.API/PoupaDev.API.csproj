@@ -4,8 +4,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <TargetFramework>net6.0</TargetFramework>
-    <UserSecretsId>c1642d05-04d7-4b0d-b903-0070623d3b97</UserSecretsId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>c1642d05-04d7-4b0d-b903-0070623d3b97</UserSecretsId>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
 
@@ -25,7 +25,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
   </ItemGroup>
 
 </Project>
